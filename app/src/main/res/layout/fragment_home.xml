@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical">
+
+    <androidx.appcompat.widget.SearchView
+        android:id="@+id/searchView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/searchView"
+            app:layout_constraintBottom_toBottomOf="parent">
+
+            <TextView
+                android:id="@+id/tvCityName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="@style/TextAppearance.Material3.TitleLarge"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="London" />
+
+            <TextView
+                android:id="@+id/tvWeather"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="6dp"
+                android:textAppearance="@style/TextAppearance.Material3.BodyMedium"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvCityName"
+                tools:text="Rain" />
+
+            <ImageView
+                android:id="@+id/ivWeatherDesc"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:padding="4dp"
+                android:src="@drawable/ic_baseline_info_48"
+                app:layout_constraintBottom_toBottomOf="@id/tvWeather"
+                app:layout_constraintDimensionRatio="1:1"
+                app:layout_constraintLeft_toRightOf="@id/tvWeather"
+                app:layout_constraintTop_toTopOf="@id/tvWeather"
+                tools:text="Rain" />
+
+            <TextView
+                android:id="@+id/tvTemperature"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:textAppearance="@style/TextAppearance.Material3.TitleLarge"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvWeather"
+                tools:text="32" />
+
+            <TextView
+                android:id="@+id/tvTemperatureSymbol"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="@style/TextAppearance.Material3.TitleSmall"
+                app:layout_constraintLeft_toRightOf="@id/tvTemperature"
+                app:layout_constraintTop_toTopOf="@id/tvTemperature"
+                tools:text="°C" />
+
+            <!-- TODO i18n -->
+            <TextView
+                android:id="@+id/tvRealFeelLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Real Feel"
+                android:textAppearance="@style/TextAppearance.Material3.TitleSmall"
+                app:layout_constraintHorizontal_chainStyle="packed"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toLeftOf="@id/tvRealFeelTemperature"
+                app:layout_constraintTop_toBottomOf="@id/tvTemperature"
+                android:layout_marginTop="6dp"
+                />
+
+            <TextView
+                android:id="@+id/tvRealFeelTemperature"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:layout_marginLeft="6dp"
+                android:textAppearance="@style/TextAppearance.Material3.TitleSmall"
+                app:layout_constraintLeft_toRightOf="@id/tvRealFeelLabel"
+                app:layout_constraintRight_toLeftOf="@id/tvRealTemperatureSymbol"
+                app:layout_constraintTop_toBottomOf="@id/tvTemperature"
+                tools:text="32"
+                />
+
+            <TextView
+                android:id="@+id/tvRealTemperatureSymbol"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="@style/TextAppearance.Material3.TitleSmall"
+                android:textSize="10sp"
+                app:layout_constraintLeft_toRightOf="@id/tvRealFeelTemperature"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="@id/tvRealFeelTemperature"
+                tools:text="°C" />
+
+            <!-- TODO i18n -->
+            <TextView
+                android:id="@+id/tvHumidityLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Humidity"
+                android:textAppearance="@style/TextAppearance.Material3.TitleSmall"
+                app:layout_constraintHorizontal_chainStyle="packed"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toLeftOf="@id/tvHumidity"
+                app:layout_constraintTop_toBottomOf="@id/tvRealFeelLabel"
+                android:layout_marginTop="6dp"
+                />
+
+            <TextView
+                android:id="@+id/tvHumidity"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="6dp"
+                android:textAppearance="@style/TextAppearance.Material3.TitleSmall"
+                app:layout_constraintLeft_toRightOf="@id/tvHumidityLabel"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="@id/tvHumidityLabel"
+                tools:text="32"
+                />
+
+
+            <ImageView
+                android:id="@+id/ivTemperatureMax"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:src="@drawable/ic_baseline_arrow_upward_48"
+                app:layout_constraintTop_toTopOf="@id/tvTemperatureMax"
+                app:layout_constraintBottom_toBottomOf="@id/tvTemperatureMax"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toLeftOf="@id/tvTemperatureMax"
+                app:layout_constraintDimensionRatio="1:1"
+                app:layout_constraintHorizontal_chainStyle="packed"
+                />
+
+            <TextView
+                android:id="@+id/tvTemperatureMax"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@id/tvHumidityLabel"
+                app:layout_constraintLeft_toRightOf="@id/ivTemperatureMax"
+                app:layout_constraintRight_toLeftOf="@id/ivTemperatureMin"
+                android:layout_marginTop="6dp"
+                tools:text="34" />
+
+            <ImageView
+                android:id="@+id/ivTemperatureMin"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:src="@drawable/ic_baseline_arrow_downward_48"
+                app:layout_constraintTop_toTopOf="@id/tvTemperatureMin"
+                app:layout_constraintBottom_toBottomOf="@id/tvTemperatureMin"
+                app:layout_constraintLeft_toRightOf="@id/tvTemperatureMax"
+                app:layout_constraintRight_toLeftOf="@id/tvTemperatureMin"
+                app:layout_constraintDimensionRatio="1:1"
+                />
+
+            <TextView
+                android:id="@+id/tvTemperatureMin"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@id/tvHumidityLabel"
+                app:layout_constraintLeft_toRightOf="@id/ivTemperatureMin"
+                app:layout_constraintRight_toRightOf="parent"
+                android:layout_marginTop="6dp"
+                tools:text="30" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    <!-- TODO i18n -->
+    <TextView
+        android:id="@+id/tvNotSelected"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Please search in search bar using\nzip code/city name/your location"
+        android:gravity="center"
+        android:textAppearance="@style/TextAppearance.Material3.TitleLarge"
+        app:layout_constraintTop_toBottomOf="@id/searchView"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:visibility="gone"
+        />
+</androidx.constraintlayout.widget.ConstraintLayout>

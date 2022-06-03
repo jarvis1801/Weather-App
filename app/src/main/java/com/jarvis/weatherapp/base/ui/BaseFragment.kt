@@ -9,8 +9,8 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.viewbinding.ViewBinding
 import com.jarvis.weatherapp.base.viewModel.BaseViewModel
 import com.jarvis.weatherapp.ui.MainActivity
-import com.jarvis.weatherapp.viewmodel.MainViewModel
-import com.jarvis.weatherapp.viewmodel.ViewModelFactory
+import com.jarvis.weatherapp.viewModel.MainViewModel
+import com.jarvis.weatherapp.viewModel.ViewModelFactory
 
 abstract class BaseFragment<VB : ViewBinding, VM: BaseViewModel, AVM: MainViewModel> : Fragment() {
     private var _viewBinding: ViewBinding? = null

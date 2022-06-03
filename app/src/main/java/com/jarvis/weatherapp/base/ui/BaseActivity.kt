@@ -1,6 +1,5 @@
 package com.jarvis.weatherapp.base.ui
 
-import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import androidx.appcompat.app.AppCompatActivity
@@ -8,7 +7,7 @@ import androidx.fragment.app.DialogFragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.viewbinding.ViewBinding
 import com.jarvis.weatherapp.base.viewModel.BaseViewModel
-import com.jarvis.weatherapp.viewmodel.ViewModelFactory
+import com.jarvis.weatherapp.viewModel.ViewModelFactory
 
 abstract class BaseActivity<VB : ViewBinding, VM : BaseViewModel> : AppCompatActivity() {
     private var _viewBinding: ViewBinding? = null

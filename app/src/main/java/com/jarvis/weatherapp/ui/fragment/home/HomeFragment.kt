@@ -19,7 +19,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel, MainViewMo
     }
 
     override fun initListener() {
-        
+        mViewBinding.customSearchView.setGotoSearchPageClick(this)
     }
 
     override fun initStartEvent() {

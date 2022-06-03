@@ -1,7 +1,11 @@
 package com.jarvis.weatherapp.base.ui
 
+import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
+import android.view.View
+import android.view.WindowManager
+import android.view.inputmethod.InputMethodManager
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.DialogFragment
 import androidx.lifecycle.ViewModelProvider
@@ -63,6 +67,11 @@ abstract class BaseActivity<VB : ViewBinding, VM : BaseViewModel> : AppCompatAct
 //    override fun attachBaseContext(base: Context) {
 //        super.attachBaseContext(LanguageUtil.createContextForLangChange(base))
 //    }
+
+    fun showKeyboard(view: View) {
+        val imm: InputMethodManager? = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager?
+        imm?.showSoftInput(view.findFocus(), WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_VISIBLE)
+    }
 
 
     override fun onDestroy() {

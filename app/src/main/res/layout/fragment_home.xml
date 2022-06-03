@@ -6,17 +6,18 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical">
 
-    <androidx.appcompat.widget.SearchView
-        android:id="@+id/searchView"
+    <com.jarvis.weatherapp.ui.customView.CustomSearchView
+        android:id="@+id/customSearchView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toTopOf="parent"
+        app:isEnableClick="false"
         />
 
     <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@id/searchView"
+            app:layout_constraintTop_toBottomOf="@id/customSearchView"
             app:layout_constraintBottom_toBottomOf="parent">
 
             <TextView
@@ -194,7 +195,7 @@
         android:text="Please search in search bar using\nzip code/city name/your location"
         android:gravity="center"
         android:textAppearance="@style/TextAppearance.Material3.TitleLarge"
-        app:layout_constraintTop_toBottomOf="@id/searchView"
+        app:layout_constraintTop_toBottomOf="@id/customSearchView"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"

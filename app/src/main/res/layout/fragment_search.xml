@@ -5,8 +5,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical">
 
-    <androidx.appcompat.widget.SearchView
-        android:id="@+id/searchView"
+    <com.jarvis.weatherapp.ui.customView.CustomSearchView
+        android:id="@+id/customSearchView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         />

@@ -17,7 +17,6 @@ class SearchFragment : BaseFragment<FragmentSearchBinding, SearchViewModel, Main
     override fun getActivityViewModelClass(): Class<MainViewModel> = MainViewModel::class.java
 
     override fun initView() {
-        
     }
 
     override fun initListener() {

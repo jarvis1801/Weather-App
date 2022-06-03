@@ -1,9 +1,11 @@
 package com.jarvis.weatherapp.base.ui
 
+import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.inputmethod.InputMethodManager
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.viewbinding.ViewBinding
@@ -74,4 +76,9 @@ abstract class BaseFragment<VB : ViewBinding, VM: BaseViewModel, AVM: MainViewMo
     abstract fun initView()
     abstract fun initListener()
     abstract fun initStartEvent()
+
+    fun showKeyboard(view: View) {
+        val baseActivity = requireActivity() as BaseActivity<*,*>
+        baseActivity.showKeyboard(view)
+    }
 }

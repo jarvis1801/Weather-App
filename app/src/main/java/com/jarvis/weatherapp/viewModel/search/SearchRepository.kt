@@ -32,8 +32,7 @@ class SearchRepository(
         weatherResponse.apply {
             updatedAt = System.currentTimeMillis()
         }
-        localDataSource.insertIgnore(weatherResponse)
-        localDataSource.updateUpdateAt(weatherResponse.id!!, weatherResponse.updatedAt!!)
+        localDataSource.insert(weatherResponse)
     }
 
     fun getLastSearch(): WeatherResponse? {

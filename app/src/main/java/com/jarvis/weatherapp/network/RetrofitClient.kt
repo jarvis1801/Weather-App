@@ -10,8 +10,8 @@ import java.util.concurrent.TimeUnit
 
 class RetrofitClient {
     companion object {
-        val BASE_URL = App.instance.resources.getString(R.string.API_DOMAIN)
-        val API_KEY = App.instance.resources.getString(R.string.API_KEY)
+        val BASE_URL = App.instance?.resources?.getString(R.string.API_DOMAIN)
+        val API_KEY = App.instance?.resources?.getString(R.string.API_KEY)
         const val TIME_OUT = 3L
     }
 
@@ -19,7 +19,7 @@ class RetrofitClient {
 
     fun getRetrofitClient() : Retrofit {
         return Retrofit.Builder()
-            .baseUrl(BASE_URL)
+            .baseUrl(BASE_URL ?: "")
             .addConverterFactory(GsonConverterFactory.create())
             .client(getOkHttpClient())
             .build()

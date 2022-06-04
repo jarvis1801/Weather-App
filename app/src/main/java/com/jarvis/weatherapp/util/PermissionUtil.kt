@@ -8,7 +8,7 @@ import androidx.core.app.ActivityCompat
 
 object PermissionUtil {
 
-    val REQUEST_CODE_LOCATION = 1
+    const val REQUEST_CODE_LOCATION = 1
 
     val locationPermission = arrayListOf(Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION)
 

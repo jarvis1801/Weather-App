@@ -39,4 +39,8 @@ class SearchRepository(
     fun getLastSearch(): WeatherResponse? {
         return localDataSource.getLastSearch()
     }
+
+    fun deleteRecentSearch(weatherResponse: WeatherResponse) {
+        localDataSource.delete(weatherResponse)
+    }
 }

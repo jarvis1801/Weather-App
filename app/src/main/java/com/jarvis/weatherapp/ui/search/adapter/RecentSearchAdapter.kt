@@ -12,7 +12,10 @@ import com.jarvis.weatherapp.model.WeatherResponse
 import com.jarvis.weatherapp.model.WeatherResponse.Companion.TYPE_LOCATION
 import java.lang.ref.WeakReference
 
-class RecentSearchAdapter(var onClick: (weatherResponse: WeatherResponse, position: Int) -> Unit) : RecyclerView.Adapter<RecentSearchAdapter.ViewHolder>() {
+class RecentSearchAdapter(
+    var onClick: (weatherResponse: WeatherResponse, position: Int) -> Unit,
+    var onDeleteClick: (weatherResponse: WeatherResponse, position: Int) -> Unit,
+) : RecyclerView.Adapter<RecentSearchAdapter.ViewHolder>() {
 
     private lateinit var context: WeakReference<Context>
     private var dataList = arrayListOf<WeatherResponse>()
@@ -33,6 +36,11 @@ class RecentSearchAdapter(var onClick: (weatherResponse: WeatherResponse, positi
         notifyDataSetChanged()
     }
 
+    fun removePosition(position: Int) {
+        dataList.removeAt(position)
+        notifyDataSetChanged()
+    }
+
     inner class ViewHolder(private val binding: ItemRecentSearchBinding): RecyclerView.ViewHolder(binding.root) {
         fun bind(weatherResponse: WeatherResponse, position: Int) {
             val context = context.get()
@@ -47,6 +55,11 @@ class RecentSearchAdapter(var onClick: (weatherResponse: WeatherResponse, positi
             }
             binding.root.setOnClickListener {
                 onClick(weatherResponse, position)
+            }
+
+            binding.ivDelete.setOnClickListener {
+                removePosition(position)
+                onDeleteClick(weatherResponse, position)
             }
         }
     }

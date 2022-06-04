@@ -12,6 +12,7 @@ import com.jarvis.weatherapp.R
 import com.jarvis.weatherapp.base.ui.BaseFragment
 import com.jarvis.weatherapp.databinding.FragmentSearchBinding
 import com.jarvis.weatherapp.model.WeatherResponse
+import com.jarvis.weatherapp.model.WeatherResponse.Companion.TYPE_CITY_NAME_OR_ZIP_CODE
 import com.jarvis.weatherapp.model.WeatherResponse.Companion.TYPE_LOCATION
 import com.jarvis.weatherapp.ui.dialog.GeneralDialog
 import com.jarvis.weatherapp.ui.dialog.GeneralDialog.Companion.TAG_SEARCH_ERROR_DIALOG
@@ -30,13 +31,17 @@ class SearchFragment : BaseFragment<FragmentSearchBinding, SearchViewModel, Main
 
     private var fusedLocationClient: FusedLocationProviderClient? = null
 
-    private val recentSearchAdapter = RecentSearchAdapter { weatherResponse, position ->
-        if (weatherResponse.type == TYPE_LOCATION) {
-            getLastKnownLocation()
-        } else {
-            weatherResponse.name?.let { mViewModel?.getWeatherFromSearch(it) }
+    private val recentSearchAdapter = RecentSearchAdapter(
+        { weatherResponse, position ->
+            if (weatherResponse.type == TYPE_LOCATION) {
+                getLastKnownLocation()
+            } else {
+                weatherResponse.name?.let { mViewModel?.getWeatherFromSearch(it) }
+            }
+        }, { weatherResponse, position ->
+            mViewModel?.deleteRecentSearch(weatherResponse)
         }
-    }
+    )
 
     fun getLastKnownLocation() {
         fusedLocationClient?.let {

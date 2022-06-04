@@ -18,7 +18,7 @@ data class WeatherResponse (
 	@PrimaryKey val id : Int? = null,
 	val name : String? = null,
 	val cod : Int? = null,
-	val type: Int? = null,
+	var type: Int? = null,
 	var updatedAt: Long? = null
 ) {
 	companion object {

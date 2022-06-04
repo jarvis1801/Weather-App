@@ -6,6 +6,7 @@ import androidx.lifecycle.viewModelScope
 import com.jarvis.weatherapp.base.datasource.Status
 import com.jarvis.weatherapp.base.viewModel.BaseViewModel
 import com.jarvis.weatherapp.model.WeatherResponse
+import com.jarvis.weatherapp.model.WeatherResponse.Companion.TYPE_CITY_NAME_OR_ZIP_CODE
 import com.jarvis.weatherapp.model.WeatherResponse.Companion.TYPE_LOCATION
 import com.jarvis.weatherapp.util.Extension.toArrayList
 import kotlinx.coroutines.Dispatchers.IO
@@ -35,6 +36,7 @@ class SearchViewModel(
         val response = withContext(IO) { searchRepository.getWeatherFromLocation(lat.toString(), lon.toString()) }
         if (response.status == Status.SUCCESS) {
             val data = response.data
+            data?.type = TYPE_CITY_NAME_OR_ZIP_CODE
             _weatherData.postValue(data)
             launch(IO) { data?.let { searchRepository.insertOrUpdateRecentSearch(data) } }
         } else if (response.status == Status.ERROR) {
@@ -58,6 +60,7 @@ class SearchViewModel(
 
         if (cityNameResponse.status == Status.SUCCESS || zipCodeResponse.status == Status.SUCCESS) {
             val data = cityNameResponse.data ?: zipCodeResponse.data
+            data?.type = TYPE_CITY_NAME_OR_ZIP_CODE
             _weatherData.postValue(data)
             launch(IO) { data?.let { searchRepository.insertOrUpdateRecentSearch(data) } }
         } else {
@@ -72,5 +75,9 @@ class SearchViewModel(
         val resultList = arrayListOf(WeatherResponse(type = TYPE_LOCATION))
         resultList.addAll(list)
         _recentSearchList.postValue(resultList)
+    }
+
+    fun deleteRecentSearch(weatherResponse: WeatherResponse) = viewModelScope.launch(IO) {
+        searchRepository.deleteRecentSearch(weatherResponse)
     }
 }

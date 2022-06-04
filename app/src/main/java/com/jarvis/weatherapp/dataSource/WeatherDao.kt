@@ -25,4 +25,7 @@ interface WeatherDao {
 
     @Query("SELECT * FROM weather ORDER BY updatedAt DESC LIMIT 1")
     fun getLastSearch(): WeatherResponse?
+
+    @Delete
+    fun delete(weatherResponse: WeatherResponse)
 }

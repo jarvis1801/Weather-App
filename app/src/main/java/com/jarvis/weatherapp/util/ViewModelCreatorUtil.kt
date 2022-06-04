@@ -1,5 +1,6 @@
 package com.jarvis.weatherapp.util
 
+import com.jarvis.weatherapp.dataSource.WeatherRemoteDataSource
 import com.jarvis.weatherapp.viewModel.MainViewModel
 import com.jarvis.weatherapp.viewModel.home.HomeRepository
 import com.jarvis.weatherapp.viewModel.home.HomeViewModel
@@ -18,7 +19,7 @@ object ViewModelCreatorUtil {
     }
 
     fun buildSearchViewModel(): SearchViewModel {
-        val searchRepository = SearchRepository()
+        val searchRepository = SearchRepository(WeatherRemoteDataSource())
         return SearchViewModel(searchRepository)
     }
 }

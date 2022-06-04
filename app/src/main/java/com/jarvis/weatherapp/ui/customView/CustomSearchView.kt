@@ -4,16 +4,16 @@ import android.content.Context
 import android.util.AttributeSet
 import android.view.LayoutInflater
 import android.view.MotionEvent
-import android.view.inputmethod.InputMethodManager
+import android.view.inputmethod.EditorInfo
 import android.widget.FrameLayout
-import androidx.core.content.ContextCompat.getSystemService
 import androidx.fragment.app.Fragment
+import com.google.android.material.textfield.TextInputLayout
 import com.jarvis.weatherapp.R
 import com.jarvis.weatherapp.databinding.CustomSearchViewBinding
 import com.jarvis.weatherapp.util.NavigationUtil.gotoSearchFragment
 
 class CustomSearchView @JvmOverloads constructor(context: Context, val attrs: AttributeSet? = null, defStyleAttr: Int = 0)
-    : FrameLayout(context, attrs, defStyleAttr) {
+    : TextInputLayout(context, attrs, defStyleAttr) {
 
     var binding = CustomSearchViewBinding.inflate(LayoutInflater.from(context), this, false)
 
@@ -45,5 +45,9 @@ class CustomSearchView @JvmOverloads constructor(context: Context, val attrs: At
 
     fun setGotoSearchPageClick(fragment: Fragment) {
         disableClickCallback = { fragment.gotoSearchFragment() }
+    }
+
+    fun getQuery(): String {
+        return binding.tietSearch.text.toString()
     }
 }

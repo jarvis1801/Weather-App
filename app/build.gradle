@@ -16,6 +16,9 @@ android {
         versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+        resValue("string", "API_DOMAIN", "https://api.openweathermap.org/")
+        resValue("string", "API_KEY", "95d190a434083879a6398aafd54d9e73")
     }
 
     buildTypes {
@@ -80,4 +83,7 @@ dependencies {
 
     // security
     implementation("androidx.security:security-crypto:1.0.0")
+
+    // location
+    implementation 'com.google.android.gms:play-services-location:19.0.1'
 }

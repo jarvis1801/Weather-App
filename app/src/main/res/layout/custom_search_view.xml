@@ -1,20 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout
+<com.google.android.material.textfield.TextInputLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/tilSearch"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:layout_marginHorizontal="20dp"
+    android:layout_marginTop="20dp"
+    app:startIconDrawable="@drawable/ic_baseline_search_24"
+    android:hint="TODO"
+    android:imeOptions="actionSearch"
+    android:imeActionLabel="Search"
+    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
 
-    <androidx.appcompat.widget.SearchView
-        android:id="@+id/searchView"
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/tietSearch"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:queryHint="TODO"
-        app:iconifiedByDefault="false"
-        android:layout_marginHorizontal="20dp"
-        android:layout_marginTop="20dp"
-        android:background="@drawable/search_view_background"
-        app:queryBackground="@android:color/transparent"
+        android:inputType="text"
+        android:singleLine="true"
+        android:imeOptions="actionSearch"
+        android:imeActionLabel="Search"
         />
 
-</FrameLayout>
+</com.google.android.material.textfield.TextInputLayout>

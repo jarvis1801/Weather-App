@@ -5,17 +5,39 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical">
 
-    <com.jarvis.weatherapp.ui.customView.CustomSearchView
-        android:id="@+id/customSearchView"
+    <com.google.android.material.textfield.TextInputLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/tilSearch"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        />
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginTop="20dp"
+        app:startIconDrawable="@drawable/ic_baseline_search_24"
+        android:hint="TODO"
+        android:imeOptions="actionSearch"
+        android:imeActionLabel="Search"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/tietSearch"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="text"
+            android:singleLine="true"
+            android:imeOptions="actionSearch"
+            android:imeActionLabel="Search"
+            />
+
+    </com.google.android.material.textfield.TextInputLayout>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvMain"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:scrollbars="none"
+        android:focusable="false"
+        android:layout_marginHorizontal="20dp"
         tools:listitem="@layout/item_recent_search"
         />
 

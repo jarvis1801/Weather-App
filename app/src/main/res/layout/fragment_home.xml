@@ -49,6 +49,7 @@
             android:layout_height="0dp"
             android:padding="4dp"
             android:src="@drawable/ic_baseline_info_48"
+            app:tint="?colorOnBackground"
             app:layout_constraintBottom_toBottomOf="@id/tvWeather"
             app:layout_constraintDimensionRatio="1:1"
             app:layout_constraintLeft_toRightOf="@id/tvWeather"
@@ -73,14 +74,13 @@
             android:textAppearance="@style/TextAppearance.Material3.TitleSmall"
             app:layout_constraintLeft_toRightOf="@id/tvTemperature"
             app:layout_constraintTop_toTopOf="@id/tvTemperature"
-            tools:text="°C" />
+            android:text="@string/metric" />
 
-        <!-- TODO i18n -->
         <TextView
             android:id="@+id/tvRealFeelLabel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Real Feel"
+            android:text="@string/real_feel"
             android:textAppearance="@style/TextAppearance.Material3.TitleSmall"
             app:layout_constraintHorizontal_chainStyle="packed"
             app:layout_constraintLeft_toLeftOf="parent"
@@ -111,14 +111,13 @@
             app:layout_constraintLeft_toRightOf="@id/tvRealFeelTemperature"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="@id/tvRealFeelTemperature"
-            tools:text="°C" />
+            android:text="@string/metric" />
 
-        <!-- TODO i18n -->
         <TextView
             android:id="@+id/tvHumidityLabel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Humidity"
+            android:text="@string/humidity"
             android:textAppearance="@style/TextAppearance.Material3.TitleSmall"
             app:layout_constraintHorizontal_chainStyle="packed"
             app:layout_constraintLeft_toLeftOf="parent"
@@ -145,6 +144,7 @@
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:src="@drawable/ic_baseline_arrow_upward_48"
+            app:tint="?colorOnBackground"
             app:layout_constraintTop_toTopOf="@id/tvTemperatureMax"
             app:layout_constraintBottom_toBottomOf="@id/tvTemperatureMax"
             app:layout_constraintLeft_toLeftOf="parent"
@@ -157,6 +157,7 @@
             android:id="@+id/tvTemperatureMax"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:textAppearance="@style/TextAppearance.Material3.TitleSmall"
             app:layout_constraintTop_toBottomOf="@id/tvHumidityLabel"
             app:layout_constraintLeft_toRightOf="@id/ivTemperatureMax"
             app:layout_constraintRight_toLeftOf="@id/ivTemperatureMin"
@@ -168,6 +169,7 @@
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:src="@drawable/ic_baseline_arrow_downward_48"
+            app:tint="?colorOnBackground"
             app:layout_constraintTop_toTopOf="@id/tvTemperatureMin"
             app:layout_constraintBottom_toBottomOf="@id/tvTemperatureMin"
             app:layout_constraintLeft_toRightOf="@id/tvTemperatureMax"
@@ -179,21 +181,20 @@
             android:id="@+id/tvTemperatureMin"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:textAppearance="@style/TextAppearance.Material3.TitleSmall"
             app:layout_constraintTop_toBottomOf="@id/tvHumidityLabel"
             app:layout_constraintLeft_toRightOf="@id/ivTemperatureMin"
             app:layout_constraintRight_toRightOf="parent"
             android:layout_marginTop="6dp"
             tools:text="30" />
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
-
-    <!-- TODO i18n -->
     <TextView
         android:id="@+id/tvNotSelected"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Please search in search bar using\nzip code/city name/your location"
+        android:text="@string/please_search_in_search_bar_using_nzip_code_city_name_your_location"
         android:gravity="center"
         android:textAppearance="@style/TextAppearance.Material3.TitleLarge"
         app:layout_constraintTop_toBottomOf="@id/customSearchView"

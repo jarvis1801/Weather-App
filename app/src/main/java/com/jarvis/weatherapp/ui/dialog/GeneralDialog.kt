@@ -10,6 +10,8 @@ class GeneralDialog : DialogFragment() {
 
     companion object {
         const val TAG_SEARCH_ERROR_DIALOG = "TAG_SEARCH_ERROR_DIALOG"
+
+        const val TAG_WEATHER_DESC_DIALOG = "TAG_WEATHER_DESC_DIALOG"
     }
 
     var title: String? = null

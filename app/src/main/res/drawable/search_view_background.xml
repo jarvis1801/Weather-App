@@ -6,7 +6,7 @@
         android:radius="16dp" />
 
     <stroke
-        android:color="@color/purple_200"
+        android:color="?android:colorPrimary"
         android:width="4dp" />
         
 

@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">Weather App</string>
+    <string name="search_using_city_name_zip_code">Search using City name/Zip code</string>
+    <string name="please_search_in_search_bar_using_nzip_code_city_name_your_location">Please search in search bar using\nzip code/city name/your location</string>
+    <string name="real_feel">Real Feel</string>
+    <string name="humidity">Humidity</string>
+    <string name="metric">°C</string>
 </resources>

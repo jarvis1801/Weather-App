@@ -21,6 +21,8 @@ class HomeViewModel(
         _currentWeather.postValue(weather)
     }
 
+    fun getCurrentWeather() : WeatherResponse? = _currentWeather.value
+
     fun getLastSearch() = viewModelScope.launch(IO) {
         val lastSearch = searchRepository.getLastSearch()
         lastSearch?.let {

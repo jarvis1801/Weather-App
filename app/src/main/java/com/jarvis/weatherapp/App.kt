@@ -2,13 +2,15 @@ package com.jarvis.weatherapp
 
 import android.app.Application
 import android.content.Context
+import androidx.room.Room
+import com.jarvis.weatherapp.dataSource.AppDatabase
 import java.io.IOException
 
 class App : Application() {
 
     companion object {
         lateinit var instance: App
-//        @JvmStatic lateinit var database: AppDatabase
+        @JvmStatic lateinit var database: AppDatabase
     }
 
     override fun attachBaseContext(base: Context?) {
@@ -19,9 +21,8 @@ class App : Application() {
     override fun onCreate() {
         super.onCreate()
 
-//        database = Room.databaseBuilder(this, AppDatabase::class.java, applicationContext.packageName)
-////            .addMigrations(MIGRATION_1_2)
-//            .build()
+        database = Room.databaseBuilder(this, AppDatabase::class.java, applicationContext.packageName)
+            .build()
 
     }
 

@@ -59,7 +59,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel, MainViewMo
     }
 
     override fun initStartEvent() {
-        
+        mViewModel?.getLastSearch()
     }
 
     private fun postWeatherValue(weather: WeatherResponse) {

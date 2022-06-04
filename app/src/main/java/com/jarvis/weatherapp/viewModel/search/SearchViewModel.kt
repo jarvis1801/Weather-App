@@ -6,6 +6,8 @@ import androidx.lifecycle.viewModelScope
 import com.jarvis.weatherapp.base.datasource.Status
 import com.jarvis.weatherapp.base.viewModel.BaseViewModel
 import com.jarvis.weatherapp.model.WeatherResponse
+import com.jarvis.weatherapp.model.WeatherResponse.Companion.TYPE_LOCATION
+import com.jarvis.weatherapp.util.Extension.toArrayList
 import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.async
 import kotlinx.coroutines.launch
@@ -21,6 +23,9 @@ class SearchViewModel(
     private var _weatherData = MutableLiveData<WeatherResponse?>()
     var weatherData = _weatherData as LiveData<WeatherResponse?>
 
+    private var _recentSearchList = MutableLiveData<ArrayList<WeatherResponse>?>()
+    var recentSearchList = _recentSearchList as LiveData<ArrayList<WeatherResponse>?>
+
     fun getWeatherFromLocation(lat: Double, lon: Double) = viewModelScope.launch(IO) {
         if (isRequestingWeatherLocation) return@launch
 
@@ -31,6 +36,7 @@ class SearchViewModel(
         if (response.status == Status.SUCCESS) {
             val data = response.data
             _weatherData.postValue(data)
+            launch(IO) { data?.let { searchRepository.insertOrUpdateRecentSearch(data) } }
         } else if (response.status == Status.ERROR) {
             requestError.postValue(response.message)
         }
@@ -53,6 +59,7 @@ class SearchViewModel(
         if (cityNameResponse.status == Status.SUCCESS || zipCodeResponse.status == Status.SUCCESS) {
             val data = cityNameResponse.data ?: zipCodeResponse.data
             _weatherData.postValue(data)
+            launch(IO) { data?.let { searchRepository.insertOrUpdateRecentSearch(data) } }
         } else {
             requestError.postValue(cityNameResponse.message)
         }
@@ -60,4 +67,10 @@ class SearchViewModel(
         isRequestingWeatherSearch = false
     }
 
+    fun getRecentSearch() = viewModelScope.launch(IO) {
+        val list = searchRepository.getRecentSearch()
+        val resultList = arrayListOf(WeatherResponse(type = TYPE_LOCATION))
+        resultList.addAll(list)
+        _recentSearchList.postValue(resultList)
+    }
 }

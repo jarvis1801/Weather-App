@@ -1,5 +1,9 @@
 package com.jarvis.weatherapp.model
 
+import androidx.room.Entity
+import androidx.room.PrimaryKey
+
+@Entity(tableName = "weather")
 data class WeatherResponse (
 	val coord : Coord? = null,
 	val weather : List<Weather>? = null,
@@ -11,10 +15,11 @@ data class WeatherResponse (
 	val dt : Int? = null,
 	val sys : Sys? = null,
 	val timezone : Int? = null,
-	val id : Int? = null,
+	@PrimaryKey val id : Int? = null,
 	val name : String? = null,
 	val cod : Int? = null,
-	val type: Int? = null
+	val type: Int? = null,
+	var updatedAt: Long? = null
 ) {
 	companion object {
 		const val TYPE_LOCATION = 0

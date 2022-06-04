@@ -34,7 +34,7 @@ class SearchFragment : BaseFragment<FragmentSearchBinding, SearchViewModel, Main
         if (weatherResponse.type == TYPE_LOCATION) {
             getLastKnownLocation()
         } else {
-            mActivityViewModel?.postWeather(weatherResponse)
+            weatherResponse.name?.let { mViewModel?.getWeatherFromSearch(it) }
         }
     }
 
@@ -60,6 +60,12 @@ class SearchFragment : BaseFragment<FragmentSearchBinding, SearchViewModel, Main
                     mActivityViewModel?.postWeather(weather)
                     findNavController().navigateUp()
                 }
+            }
+        }
+
+        mViewModel?.recentSearchList?.observe(viewLifecycleOwner) { recentSearchList ->
+            if (recentSearchList != null) {
+                recentSearchAdapter.updateData(recentSearchList)
             }
         }
 
@@ -102,6 +108,7 @@ class SearchFragment : BaseFragment<FragmentSearchBinding, SearchViewModel, Main
     }
 
     override fun initStartEvent() {
+        mViewModel?.getRecentSearch()
     }
 
     private fun showSearchErrorDialog() {
